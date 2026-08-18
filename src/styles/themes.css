@@ -1,65 +1,27 @@
 :root,
-[data-theme="local-business"] {
-  --site-canvas: #f3f1ea;
-  --site-surface: #fffdf8;
-  --site-ink: #17241d;
-  --site-muted: #5f6d64;
-  --site-brand: #175b42;
-  --site-brand-contrast: #ffffff;
-  --site-accent: #e0b866;
-  --site-line: #d7ddd8;
-  --site-radius: 1.5rem;
-  --site-shadow: 0 24px 70px rgb(23 36 29 / 0.1);
-}
-
 [data-theme="minimal-premium"] {
-  --site-canvas: #f6f3ee;
-  --site-surface: #fffdfa;
-  --site-ink: #292622;
-  --site-muted: #716b63;
-  --site-brand: #5b4635;
-  --site-brand-contrast: #ffffff;
-  --site-accent: #c8aa7d;
-  --site-line: #dfd8cf;
+  --site-canvas: #f4efe7;
+  --site-surface: #fbf8f2;
+  --site-surface-strong: #fffdf9;
+  --site-ink: #242321;
+  --site-ink-soft: #3b3935;
+  --site-muted: #6c675f;
+  --site-brand: #9b4f37;
+  --site-brand-dark: #713825;
+  --site-brand-soft: #ead5ca;
+  --site-brand-contrast: #fffaf3;
+  --site-accent: #bd7256;
+  --site-line: #d8cfc3;
+  --site-line-strong: #b9ad9f;
+  --site-dark: #242321;
+  --site-dark-muted: #c7beb3;
+  --site-radius-sm: 0.375rem;
   --site-radius: 0.75rem;
-  --site-shadow: 0 24px 70px rgb(41 38 34 / 0.08);
-}
-
-[data-theme="modern-tech"] {
-  --site-canvas: #eef4ff;
-  --site-surface: #ffffff;
-  --site-ink: #101b34;
-  --site-muted: #5d6980;
-  --site-brand: #3157e4;
-  --site-brand-contrast: #ffffff;
-  --site-accent: #6ee7d8;
-  --site-line: #d7e0f2;
-  --site-radius: 1.25rem;
-  --site-shadow: 0 24px 70px rgb(49 87 228 / 0.13);
-}
-
-[data-theme="luxury"] {
-  --site-canvas: #11100f;
-  --site-surface: #1a1816;
-  --site-ink: #f5f0e6;
-  --site-muted: #bdb4a7;
-  --site-brand: #c9a86a;
-  --site-brand-contrast: #11100f;
-  --site-accent: #c9a86a;
-  --site-line: #37322c;
-  --site-radius: 0.25rem;
-  --site-shadow: 0 24px 70px rgb(0 0 0 / 0.32);
-}
-
-[data-theme="creative"] {
-  --site-canvas: #fff3e6;
-  --site-surface: #fffaf5;
-  --site-ink: #27183c;
-  --site-muted: #715e82;
-  --site-brand: #e04f74;
-  --site-brand-contrast: #ffffff;
-  --site-accent: #ffc857;
-  --site-line: #ead4d7;
-  --site-radius: 2rem;
-  --site-shadow: 0 24px 70px rgb(224 79 116 / 0.14);
+  --site-radius-lg: 1.5rem;
+  --site-shadow: 0 24px 80px rgb(55 40 31 / 0.1);
+  --site-shadow-soft: 0 12px 40px rgb(55 40 31 / 0.07);
+  --site-container: 76rem;
+  --site-section-space: clamp(5rem, 10vw, 9rem);
+  --site-font-sans: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif;
+  --site-font-serif: Iowan Old Style, Baskerville, "Times New Roman", serif;
 }

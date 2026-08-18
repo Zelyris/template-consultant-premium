@@ -1,21 +1,25 @@
-import type { NavigationItem } from "@/lib/types";
+import type { ActionItem } from "@/lib/types";
 
-type ActionLinkProps = NavigationItem & {
-  variant?: "primary" | "secondary";
+type ActionLinkProps = ActionItem & {
+  variant?: "primary" | "secondary" | "light";
+  className?: string;
 };
 
-export function ActionLink({ href, label, variant = "primary" }: ActionLinkProps) {
-  const variantClasses =
-    variant === "primary"
-      ? "bg-brand text-brand-contrast hover:opacity-90"
-      : "border border-line bg-surface text-foreground hover:border-brand";
+export function ActionLink({ href, label, ariaLabel, variant = "primary", className = "" }: ActionLinkProps) {
+  const variantClasses = {
+    primary: "border border-brand bg-brand text-brand-contrast hover:border-brand-dark hover:bg-brand-dark",
+    secondary: "border border-line-strong bg-transparent text-foreground hover:border-brand hover:text-brand",
+    light: "border border-brand-contrast bg-brand-contrast text-dark hover:bg-brand-soft",
+  }[variant];
 
   return (
     <a
       href={href}
-      className={`inline-flex min-h-12 items-center justify-center rounded-full px-6 text-sm font-semibold transition ${variantClasses}`}
+      aria-label={ariaLabel}
+      className={`group inline-flex min-h-12 items-center justify-center gap-3 rounded-full px-6 text-sm font-semibold transition-colors duration-300 ${variantClasses} ${className}`}
     >
       {label}
+      <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
     </a>
   );
 }

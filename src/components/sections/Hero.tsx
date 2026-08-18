@@ -1,56 +1,57 @@
 import { ActionLink } from "@/components/ui/ActionLink";
 import { Container } from "@/components/ui/Container";
-import type { HeroContent } from "@/lib/types";
+import type { siteConfig } from "@/config/site";
+import type { homeContent } from "@/content/content";
 
 type HeroProps = {
-  content: HeroContent;
-  themeLabel: string;
+  content: typeof homeContent.hero;
+  actions: typeof siteConfig.actions;
 };
 
-export function Hero({ content, themeLabel }: HeroProps) {
+export function Hero({ content, actions }: HeroProps) {
   return (
-    <section id="accueil" className="overflow-hidden py-20 sm:py-28">
-      <Container className="grid items-center gap-12 lg:grid-cols-[1.2fr_.8fr]">
-        <div>
-          <p className="mb-5 text-sm font-bold uppercase tracking-[0.2em] text-brand">
-            {content.eyebrow}
-          </p>
-          <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-[-0.05em] sm:text-6xl lg:text-7xl">
+    <section id="accueil" className="grain relative overflow-hidden border-b border-line bg-surface">
+      <div className="absolute -right-24 top-16 size-[28rem] rounded-full bg-brand-soft/55 blur-3xl" aria-hidden="true" />
+      <Container className="relative grid min-h-[calc(100svh-7rem)] items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.08fr_.72fr] lg:gap-16 lg:py-24">
+        <div className="reveal">
+          <div className="flex items-center gap-3 text-[0.7rem] font-bold uppercase tracking-[0.22em] text-brand">
+            <span className="h-px w-8 bg-brand" aria-hidden="true" />
+            <p>{content.eyebrow}</p>
+          </div>
+          <h1 className="font-editorial mt-6 max-w-4xl text-balance text-[clamp(3.25rem,8vw,6.9rem)] leading-[0.93] tracking-[-0.055em]">
             {content.title}
           </h1>
-          <p className="mt-7 max-w-2xl text-pretty text-lg leading-8 text-muted sm:text-xl">
-            {content.introduction}
-          </p>
+          <div className="mt-8 grid max-w-3xl gap-5 border-l border-brand pl-5 sm:grid-cols-[1.35fr_.65fr] sm:gap-8 sm:pl-7">
+            <p className="text-pretty text-lg leading-8 text-foreground sm:text-xl">{content.introduction}</p>
+            <p className="text-sm leading-6 text-muted">{content.supportingText}</p>
+          </div>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <ActionLink {...content.primaryAction} />
-            <ActionLink {...content.secondaryAction} variant="secondary" />
+            <ActionLink {...actions.primary} />
+            <ActionLink {...actions.secondary} variant="secondary" />
           </div>
         </div>
 
-        <aside className="relative rounded-[var(--site-radius)] border border-line bg-surface p-7 shadow-[var(--site-shadow)] sm:p-9">
-          <div className="absolute -right-16 -top-16 size-48 rounded-full bg-accent/35 blur-3xl" aria-hidden="true" />
-          <p className="relative text-xs font-bold uppercase tracking-[0.18em] text-brand">
-            Modèle maître
-          </p>
-          <dl className="relative mt-7 grid gap-6">
-            <div>
-              <dt className="text-sm text-muted">Identité métier</dt>
-              <dd className="mt-1 font-semibold">Aucune</dd>
-            </div>
-            <div>
-              <dt className="text-sm text-muted">Thème de départ</dt>
-              <dd className="mt-1 font-semibold">{themeLabel}</dd>
-            </div>
-            <div>
-              <dt className="text-sm text-muted">Règle</dt>
-              <dd className="mt-1 flex items-center gap-2 font-semibold">
-                <span className="size-2.5 rounded-full bg-brand" aria-hidden="true" />
-                Dupliquer avant de personnaliser
-              </dd>
-            </div>
-          </dl>
-        </aside>
+        <StrategyGraphic content={content.graphic} />
       </Container>
     </section>
+  );
+}
+
+function StrategyGraphic({ content }: { content: typeof homeContent.hero.graphic }) {
+  return (
+    <figure className="reveal reveal-delay relative mx-auto aspect-square w-full max-w-[31rem]" aria-label={content.label}>
+      <div className="absolute inset-[5%] rounded-full border border-line-strong" />
+      <div className="absolute inset-[18%] rounded-full border border-brand/40" />
+      <div className="absolute inset-[31%] rotate-45 border border-line-strong bg-surface-strong shadow-[var(--site-shadow)]" />
+      <div className="absolute inset-0 grid place-items-center">
+        <div className="z-10 grid size-32 place-items-center rounded-full bg-dark text-center text-brand-contrast shadow-[var(--site-shadow)]">
+          <span className="font-editorial text-2xl">{content.center}</span>
+        </div>
+      </div>
+      <span className="absolute left-1/2 top-[3%] -translate-x-1/2 rounded-full border border-line bg-surface-strong px-4 py-2 text-xs font-bold uppercase tracking-[0.12em]">{content.items[0]}</span>
+      <span className="absolute bottom-[12%] left-[2%] rounded-full border border-line bg-surface-strong px-4 py-2 text-xs font-bold uppercase tracking-[0.12em]">{content.items[1]}</span>
+      <span className="absolute bottom-[12%] right-[0%] rounded-full border border-line bg-surface-strong px-4 py-2 text-xs font-bold uppercase tracking-[0.12em]">{content.items[2]}</span>
+      <figcaption className="absolute bottom-0 left-1/2 -translate-x-1/2 whitespace-nowrap text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted">{content.note}</figcaption>
+    </figure>
   );
 }
